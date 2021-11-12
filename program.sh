@@ -1,1 +1,1 @@
-REDUNDANT WORKING ON A NEW .SH FILE
+python program.py
