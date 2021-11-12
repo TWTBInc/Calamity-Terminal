@@ -1,3 +1,1 @@
-#!/bin/sh
-CWD="$(pwd)"
-path/to/python program.py
+REDUNDANT WORKING ON A NEW .SH FILE
