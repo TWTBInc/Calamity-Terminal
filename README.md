@@ -7,3 +7,21 @@ I do not take any help, despite your best efforts to attempt to make my life eas
 Mit license and whatnot.
 
 https://bit.ly/CalamityTerminal for download.
+
+# Installation
+
+For pacman and arch linux based distros of linux run the .sh file for installation.
+For other distros or windows do the following.
+
+## Linux distros
+Use your package manager and install python and python-pip (I believe otherwise its python being added to path)
+run this command in the Calamity directory
+
+###python Calamity.py
+
+## Windows
+
+Install python on the first page of the installer make sure to add python to path.
+run this command in the Calamity directory
+
+###python Calamity.py
