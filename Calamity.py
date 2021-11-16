@@ -1,9 +1,15 @@
+#CODE COMMENTS MEANT TO BE READ WITH WORD WRAP
+#CODE COMMENTS MEANT TO BE
+#READ WITH WORD WRAP 
+
 import os
 import webbrowser
 import random
 import time
+import getpass
+userName = getpass.getuser()
 
-#os for os.remove() and os.system() and whatnot webbrowser for webbrowser.open() random for random list choices time for its time.sleep()
+#os for os.remove() and os.system() and whatnot webbrowser for webbrowser.open() random for random list choices time for its time.sleep() 
 
 def clearConsole():
     command = 'clear'
@@ -13,6 +19,7 @@ def clearConsole():
     	command = "clear"
     os.system(command)
 #a command to clear console works most of the time
+
 
 def openFakeBash():
 	commandBASH = "python fakeBash.py"
@@ -28,24 +35,24 @@ def openSnek():
 
 VideoList = ["https://www.youtube.com/watch?v=d5ab8BOu4LE", "https://www.youtube.com/watch?v=H6M0EulApMM", "https://www.youtube.com/watch?v=IRF6nmqcbxo", "https://www.youtube.com/watch?v=XZVpR3Pk-r", "https://www.youtube.com/watch?v=qeMFqkcPYcg", "https://www.youtube.com/watch?v=9jK-NcRmVcw", "https://www.youtube.com/watch?v=cPCLFtxpadE", "https://www.youtube.com/watch?v=PGNiXGX2nLU", "https://www.youtube.com/watch?v=ZHwVBirqD2s", "https://www.youtube.com/watch?v=lDK9QqIzhwk", "https://www.youtube.com/watch?v=F01UTYg79KY", "https://www.youtube.com/watch?v=HgzGwKwLmgM", "https://www.youtube.com/watch?v=CD-E-LDc384"]
 
-#A list of videos for youtube random which shows a random one of these songs pretty cool right
+#A list of videos for youtube random which shows a random one of these songs pretty cool right? Epic
 
 clearConsole()
 print("Welcome to Calamity terminal. Type --help to see the list of available commands.\n")
 
-#Here we clear the console on startup and print the welcome message when the user wills it they can also clear it. We do this because the user likely did something before to run this
+#Here we clear the console on startup and print the welcome message when the user wills it they can also clear it. We do this because the user likely did something before to run this so yeah.
 
 while True:
-	commandInput = input(">> ")
+	commandInput = input("[{}]>> ".format(userName))
 	commandInput = commandInput.lower()
 	if commandInput == "--help":
 		print("List of available commands type commandname --help to get help for that specific command: \n")
-		print("Browser, CreateFile, Clear, Quit, Kill \n Exit, Credits, DeleteFile, Source, Google\n Youtube random, FakeBash, Easter Eggs, Donate")
+		print("Browser, CreateFile, Clear, Quit, Kill, \n Exit, Credits, DeleteFile, Source, Google\n Youtube random, FakeBash, Easter Eggs, Donate, Snake,\n CD")
 		continue
 	#here this is a while loop so the user can get back to where they need to be instead of having to copy code each time lol it would be terrible and infinite in size
 
 	elif commandInput == "createfile":
-		FileNameInput = input("Enter file name here \n>> ")
+		FileNameInput = input("Enter file name here \n[{}]>> ".format(userName))
 		f = open("{}".format(FileNameInput), "x")
 		#So here we have the createfile we use X so that if it exists it still gets created and doesn't return an error
 		continue
@@ -53,6 +60,7 @@ while True:
 	elif commandInput == "clear":
 		clearConsole()
 		print("Welcome to Calamity terminal. Type --help to see the list of available commands.\n")
+		continue
 		#We use this to make sure we still see the help message
 
 	#The kill terminal commands, idealy we would kill the entire process but since we can't run this as its own terminal yet we're just left quitting out of calamity but not the actual terminal
@@ -74,9 +82,14 @@ while True:
 		continue
 	
 	elif commandInput == "deletefile":
-		removeFile = input("Enter file name here. \n>>")
-		os.remove("{}".format(removeFile))
-		continue
+		removeFile = input("Enter file name here. \n[{}]>>".format(userName))
+		isFile = os.path.isfile(removeFile)
+		if isFile == True:
+			os.remove("{}".format(removeFile))
+			continue
+		else:
+			print("That isn't a file, please choose a file. Note that this is case sensetive unlike commands.")
+			continue
 	#Here we remove a file, it was inconsistent with creating one so I changed that but otherwise we input file anme and use os.remove and format it to the variable
 
 	elif commandInput == "calamity":
@@ -84,14 +97,14 @@ while True:
 	#Simple easter egg to throw people off
 
 	elif commandInput == "browser":
-		browserURL = input("Enter the url you want to go to.\n>>")
+		browserURL = input("Enter the url you want to go to.\n[{}]>>".format(userName))
 		if browserURL == "":
 			print("You just found all our clues, the password is, (hentaiman is gonna give it to you impregnation and the unstoppable act of deflowering")
-			time.sleep(3)
-			webbrowser.open('google.com')
+			time.sleep(1)
+			webbrowser.open("")
 			continue
 		print("Opening web browser...")
-		time.sleep(2)
+		time.sleep(0.5)
 		webbrowser.open('{}'.format(browserURL))
 		print("Opened web browser")
 		continue
@@ -99,11 +112,11 @@ while True:
 
 	elif commandInput == "password":
 		print("Calamity terminal is evolving enter the secret password to help it evolve\n")
-		secretPassword = input("Enter secret password here\n>>")
+		secretPassword = input("Enter secret password here\n[{}]>>".format(userName))
 		secretPassword = secretPassword.lower()
 		if secretPassword == "hentaiman is gonna give it to you impregnation and the unstoppable act of deflowering":
 			print("Wow you did it you got the secret password bro thats so cool")
-			time.sleep(1)
+			time.sleep(0.5)
 			webbrowser.open('https://www.youtube.com/watch?v=BkEZvQcokTc&t=158s')
 			continue
 		else:
@@ -133,8 +146,8 @@ while True:
 
 	elif commandInput == "kill --help":
 		print("The kill command kills you!")
-		time.sleep(5)
-		print("Just kidding or am I we won't know until later on?")
+		time.sleep(2)
+		print("Just kidding or am I? We won't know until later on?")
 		continue
 
 	elif commandInput == "credits --help":
@@ -147,7 +160,6 @@ while True:
 		continue
 
 	elif commandInput == "source":
-		time.sleep(1)
 		webbrowser.open('https://github.com/Blowzart/Calamity-Terminal')
 		continue
 
@@ -156,8 +168,7 @@ while True:
 		continue
 
 	elif commandInput == "google":
-		googleSearch = input("What do you want to search?\n>>")
-		time.sleep(2)
+		googleSearch = input("What do you want to search?\n[{}]>>".format(userName))
 		webbrowser.open('https://www.google.com/search?q={}'.format(googleSearch))
 		continue
 
@@ -167,13 +178,13 @@ while True:
 
 	elif commandInput == "my memories will last":
  		print("You can't erase the past.")
- 		time.sleep(2)
+ 		time.sleep(0.5)
  		webbrowser.open('https://www.youtube.com/watch?v=Ir_1tqV9ICk')
  		continue
 
 	elif commandInput == "im sorry":
  		print("I'm not a real person the developer is you can find him at")
- 		time.sleep(3)
+ 		time.sleep(0.5)
  		webbrowser.open('https://github.com/Blowzart/Calamity-Terminal')
  		continue
 
@@ -185,7 +196,7 @@ while True:
  	#A couple of easter eggs printing and web browser opening
 	elif commandInput == "youtube random":
  		print("Sending a random song...")
- 		time.sleep(2)
+ 		time.sleep(0.3)
  		webbrowser.open('{}'.format(random.choice(VideoList)))
  		continue
  	#Wow also very complicated and not complicated, the system takes a random youtube video from my videolist list formats the {} to that using .format
@@ -202,7 +213,9 @@ while True:
 		continue
 
 	elif commandInput == "password --help":
-		print("Calamity.error(process exited with code 1) password is a real command password --help is not")
+		print("Calamity.error(process exited with code 1) password is a real command the --help tag is not defined please report this at our github")
+		time.sleep(1)
+		webbrowser.open("https://github.com/Blowzart/Calamity-Terminal")
 		exit()
 
 	elif commandInput == "easter eggs":
@@ -212,18 +225,18 @@ while True:
 		eggInput = input("We have easter eggs we do you can check out a list of them at out github wiki would you like to go there Y/N \n>>")
 		eggInput = eggInput.lower()
 		if eggInput == "y":
-			time.sleep(1)
+			time.sleep(0.5)
 			webbrowser.open("https://github.com/Blowzart/Calamity-Terminal/wiki/Easter-eggs.")
 
 	elif commandInput == "last input":
-		print("This command is redundant in this version.")
+		print("This command is redundant in this version support for the lastinput command has been dropped")
 		continue
 
 	elif commandInput == "fakebash":
 		openFakeBash()
 
 	elif commandInput == "fakebash --help":
-		print("FakeBash is a command that enters a calamity terminal environment with bash syntax and capabilities for the more technically inclined users.")
+		print("FakeBash is a command that enters a calamity terminal environment\n with regular syntax and capabilities for the more technically inclined users.")
 		continue
 
 	elif commandInput == "donate":
@@ -238,13 +251,36 @@ while True:
 		continue
 
 	elif commandInput == "snake":
+		print("Press the B key to hide the score GUI")
+		time.sleep(1)
+		os.system("pip install pygame")
 		openSnek()
 		continue
 
-	elif commandInput == "snake --help":
-		print("Lets you play the classic snake game!")
+	elif commandInput == "cls":
+		clearConsole()
+		print("Welcome to Calamity terminal. Type --help to see the list of available commands.\n")
 		continue
-		
+
+	elif commandInput == "snake --help":
+		print("Lets you play the snake game. You can also press the B key to hide the score GUI")
+		continue
+
+	elif commandInput == "cd":
+		direcInput = input("input the directory you would like to go to.\n[{}]>> ".format(userName))
+		enterDirec = os.path.isdir(direcInput)
+		if enterDirec == True:
+		    os.chdir(direcInput)
+		    continue
+
+		else:
+			print("That isn't a path please select a path.")
+			continue
+
+	elif commandInput == "cd --help":
+		print("Changes directories for Calamity to be able to work anywhere.\n Can only cd to folders inside the Calamity folder.")
+		continue
+
 	else:
 		print("That isn't a command --help to find commands.")
 		continue
