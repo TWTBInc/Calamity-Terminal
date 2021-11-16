@@ -1,5 +1,5 @@
 import os
-
+#This wont get updated unless its broken but it probably won't break 
 
 def clearConsole():
     command = 'clear'
@@ -15,10 +15,10 @@ while True:
 	commandInput = input(">> ")
 	if commandInput == "clear":
 		clearConsole()
-		print("Welcome to Calamity fakeBash. Typing bash will take you back to regular Calamity. Type --help to see the list of available commands.\n")
+		print("Welcome to Calamity fakeBash, typing terminal will return to Calamity Terminal.Type --help to see the list of available commands.\n")
 
 	elif commandInput == "terminal":
-		os.system("./Calamity.sh")
+		os.system("python Calamity.py")
 	else:
 		os.system(commandInput)
 		continue
