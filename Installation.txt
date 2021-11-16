@@ -5,8 +5,11 @@ To install on arch run the INSTALL.sh file with sudo ./INSTALL.sh
 On every other distro 
 
 sudo [packagemanager] [installation keyword] python
-then run the Calamity.sh 
+sudo [packagemanager] [installation keyword] python-pip
+pip install pygame
+then run the Calamity.py with python Calamity.py
 
 for arch it will automatically install and run it keep in mind you have to be in the directory of the installed files.
 
 Happy using!
+
