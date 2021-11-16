@@ -1,130 +1,240 @@
-#Do not ever update this game ever you will get confused for future reference.
+#CODE COMMENTS MEANT TO BE READ WITH WORD WRAP
+#CODE COMMENTS MEANT TO BE
+#READ WITH WORD WRAP
 
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame
 import time
 import random
+#Hide the pygame prompt
+
+#Snakes per second
+snake_speed = 12.5
+
+prevSnakeSpeed = 0
+
+score = 0
+
+pause = False
+
+#I thought I was up to the task of not updating this but NOOOOOOO I failed I tried.
+
+showScore = True
  
+# Window size
+window_x = 720
+window_y = 480
+ 
+# defining colors
+black = pygame.Color(0, 0, 0)
+white = pygame.Color(255, 255, 255)
+red = pygame.Color(255, 0, 0)
+green = pygame.Color(57, 255, 20) #Changed to be neon green
+blue = pygame.Color(0, 0, 255)
+
+#Most of these are unused.
+
+# Initialising pygame
 pygame.init()
  
-white = (255, 255, 255)
-yellow = (255, 255, 102)
-black = (0, 0, 0)
-orange = (255, 125, 0)
-red = (230, 0, 0) #This isnt ever used
-green = (0, 255, 0)
-blue = (50, 153, 213)
+# Initialise game window
+game_window = pygame.display.set_mode((window_x, window_y))
+pygame.display.set_caption('Calamity Snake Score: {}'.format(score))
  
-dis_width = 1240
-dis_height = 715
+# FPS (frames per second) controller
+fps = pygame.time.Clock()
  
-dis = pygame.display.set_mode((dis_width, dis_height))
-pygame.display.set_caption('Calamity Snake')
+# defining snake default position
+snake_position = [100, 50]
  
-clock = pygame.time.Clock()
+# defining first 4 blocks of snake body
+snake_body = [[100, 50],
+              [90, 50],
+              [80, 50],
+              [70, 50]
+              ]
+# fruit position
+fruit_position = [random.randrange(1, (window_x//10)) * 10,
+                  random.randrange(1, (window_y//10)) * 10]
  
-snake_block = 10
-snake_speed = 15
+fruit_spawn = True
  
-font_style = pygame.font.SysFont("comicsansms", 25)
-score_font = pygame.font.SysFont("comicsansms", 35)
+# setting default snake direction towards
+# right
+direction = 'RIGHT'
+change_to = direction
  
+#Changed to not initialize score variable here but at the top for other reasons.
  
-def Your_score(score):
-    value = score_font.render("Your Score: " + str(score), True, yellow)
-    dis.blit(value, [0, 0])
+# displaying Score function
+def show_score(choice, color, font, size):
+   
+    # creating font object score_font
+    score_font = pygame.font.SysFont(font, size)
+     
+    # create the display surface object
+    # score_surface
+    score_surface = score_font.render('Score : ' + str(score), True, color)
+     
+    # create a rectangular object for the text
+    # surface object
+    score_rect = score_surface.get_rect()
+     
+    # displaying text
+    game_window.blit(score_surface, score_rect)
  
- 
- 
-def our_snake(snake_block, snake_list):
-    for x in snake_list:
-        pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
- 
- 
-def message(msg, color):
-    mesg = font_style.render(msg, True, color)
-    dis.blit(mesg, [dis_width / 6, dis_height / 3])
- 
- 
-def gameLoop():
-    game_over = False
-    game_close = False
- 
-    x1 = dis_width / 2
-    y1 = dis_height / 2
- 
-    x1_change = 0
-    y1_change = 0
- 
-    snake_List = []
-    Length_of_snake = 1
- 
-    foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
-    foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
- 
-    while not game_over:
- 
-        while game_close == True:
-            dis.fill(orange)
-            message("You Lost! Press C-Play Again or Q-Quit", blue)
-            Your_score(Length_of_snake - 1)
-            pygame.display.update()
- 
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_q:
-                        game_over = True
-                        game_close = False
-                    if event.key == pygame.K_c:
-                        gameLoop()
- 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                game_over = True
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a:
-                    x1_change = -snake_block
-                    y1_change = 0
-                elif event.key == pygame.K_d:
-                    x1_change = snake_block
-                    y1_change = 0
-                elif event.key == pygame.K_w:
-                    y1_change = -snake_block
-                    x1_change = 0
-                elif event.key == pygame.K_s:
-                    y1_change = snake_block
-                    x1_change = 0
- 
-        if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0:
-            game_close = True
-        x1 += x1_change
-        y1 += y1_change
-        dis.fill(orange)
-        pygame.draw.rect(dis, blue, [foodx, foody, snake_block, snake_block])
-        snake_Head = []
-        snake_Head.append(x1)
-        snake_Head.append(y1)
-        snake_List.append(snake_Head)
-        if len(snake_List) > Length_of_snake:
-            del snake_List[0]
- 
-        for x in snake_List[:-1]:
-            if x == snake_Head:
-                game_close = True
- 
-        our_snake(snake_block, snake_List)
-        Your_score(Length_of_snake - 1)
- 
-        pygame.display.update()
- 
-        if x1 == foodx and y1 == foody:
-            foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
-            foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
-            Length_of_snake += 1
- 
-        clock.tick(snake_speed)
- 
+# game over function
+def game_over():
+   
+    # creating font object my_font
+    my_font = pygame.font.SysFont('times new roman', 50)
+     
+    # creating a text surface on which text
+    # will be drawn
+    game_over_surface = my_font.render(
+        'Your Score is : ' + str(score), True, red)
+     
+    # create a rectangular object for the text
+    # surface object
+    game_over_rect = game_over_surface.get_rect()
+     
+    # setting position of the text
+    game_over_rect.midtop = (window_x/2, window_y/4)
+     
+    # blit wil draw the text on screen
+    game_window.blit(game_over_surface, game_over_rect)
+    pygame.display.flip()
+     
+    # after 2 seconds we will quit the program
+    time.sleep(2)
+     
+    # deactivating pygame library
     pygame.quit()
+     
+    # quit the program
     quit()
  
  
-gameLoop()
+# Main Function
+while True:
+     
+    # handling key events
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                change_to = 'UP'
+
+            if event.key == pygame.K_DOWN:
+                change_to = 'DOWN'
+
+            if event.key == pygame.K_LEFT:
+                change_to = 'LEFT'
+
+            if event.key == pygame.K_RIGHT:
+                change_to = 'RIGHT'
+
+            if event.key == pygame.K_w:
+                change_to = "UP"
+
+            if event.key == pygame.K_s:
+                change_to = "DOWN"
+
+            if event.key == pygame.K_a:
+                change_to = "LEFT"
+
+            if event.key == pygame.K_d:
+                change_to = "RIGHT"
+
+            if event.key == pygame.K_b:
+                if showScore == True:
+                    showScore = False
+
+                elif showScore == False:
+                     showScore = True
+
+                else:
+                    showScore = True
+
+            if event.key == pygame.K_p:
+                if pause == True:
+                    pause = False
+
+                else :
+                    pause = True
+
+    while pause == True:
+        for event in pygame.event.get():
+
+            if event.key == pygame.K_p:
+                pause = False
+
+ 
+    if change_to == 'UP' and direction != 'DOWN':
+        direction = 'UP'
+    if change_to == 'DOWN' and direction != 'UP':
+        direction = 'DOWN'
+    if change_to == 'LEFT' and direction != 'RIGHT':
+        direction = 'LEFT'
+    if change_to == 'RIGHT' and direction != 'LEFT':
+        direction = 'RIGHT'
+ 
+    # Moving the snake
+    if direction == 'UP':
+        snake_position[1] -= 10
+    if direction == 'DOWN':
+        snake_position[1] += 10
+    if direction == 'LEFT':
+        snake_position[0] -= 10
+    if direction == 'RIGHT':
+        snake_position[0] += 10
+
+#Snake growing he grows when he collides with an apple.
+    snake_body.insert(0, list(snake_position))
+    if snake_position[0] == fruit_position[0] and snake_position[1] == fruit_position[1]:
+        score += 10
+        pygame.display.set_caption('Calamity Snake Score:{}'.format(score))
+        snake_speed += 0.25
+        fruit_spawn = False
+        #We make it harder to win with higher snake speed.
+
+    else:
+        snake_body.pop()
+         
+    if not fruit_spawn:
+        fruit_position = [random.randrange(1, (window_x//10)) * 10,
+                          random.randrange(1, (window_y//10)) * 10]
+         
+    fruit_spawn = True
+    game_window.fill(black)
+     
+    for pos in snake_body:
+        pygame.draw.rect(game_window, green,
+                         pygame.Rect(pos[0], pos[1], 10, 10))
+    pygame.draw.rect(game_window, red, pygame.Rect(
+        fruit_position[0], fruit_position[1], 10, 10))
+ 
+    # Game Over conditions
+    if snake_position[0] < 0 or snake_position[0] > window_x-10:
+        game_over()
+    if snake_position[1] < 0 or snake_position[1] > window_y-10:
+        game_over()
+ 
+    # Touching the snake body
+    for block in snake_body[1:]:
+        if snake_position[0] == block[0] and snake_position[1] == block[1]:
+            game_over()
+ 
+    # displaying score countinuously
+    if showScore == True:
+        show_score(1, white, 'comicsansms', 50)
+    else:
+        pass
+        #Doesnt do shit.
+
+ 
+    # Refresh game screen
+    pygame.display.update()
+ 
+    # Frame Per Second /Refres Rate
+    fps.tick(snake_speed)
