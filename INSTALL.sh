@@ -5,4 +5,4 @@ sudo pacman -S python
 sudo pacman -S python-pip
 python --version
 pip install pygame
-./Calamity.sh
+python Calamity.py
