@@ -17,11 +17,11 @@ For other distros or windows do the following.
 Use your package manager and install python and python-pip (I believe otherwise its python being added to path)
 run this command in the Calamity directory
 
-###python Calamity.py
+python Calamity.py
 
 ## Windows
 
 Install python on the first page of the installer make sure to add python to path.
 run this command in the Calamity directory
 
-###python Calamity.py
+python Calamity.py
