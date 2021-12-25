@@ -25,3 +25,7 @@ Install python on the first page of the installer make sure to add python to pat
 run this command in the Calamity directory
 
 python Calamity.py
+
+
+## Legal
+Calamity Terminal is a product of the Calamity Group a subsidiary of TWTB Incorporated
