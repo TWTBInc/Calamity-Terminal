@@ -67,6 +67,32 @@ while True:
 	elif commandInput == "quit":
 		clearConsole()
 		exit()
+	
+	elif commandInput == "fly me to the moon":
+		print("And let me play among the stars, let me see what spring is like on jupiter and mars")
+		time.sleep(0.4)
+		webbrowser.open("https://www.youtube.com/watch?v=4S6STxv9LDE")
+		continue
+		
+	elif commandInput == "ayanami":
+		print("Is best girl")
+		continue
+	
+	elif commandInput == "rei":
+		print("Is best girl")
+		continue
+	
+	elif commandInput == "ayanami rei":
+		print("Narrator: and so on that day, it was said that Calamity Terminal cried for 7 hours that day, the next day for 3 hours and soon it had been 8 days, then fly me to the moon played and it had been 1 year")
+		continue
+		
+	elif commandInput == "rei ayanami":
+		print("Fly me to the moon...")
+		continue
+	
+	elif commandInput == "00000000":
+		print("Very funny my guy but this shell isn't a legacy machine")
+		continue
 
 	elif commandInput == "kill":
 		clearConsole()
