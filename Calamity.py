@@ -43,16 +43,17 @@ print("Welcome to Calamity terminal. Type --help to see the list of available co
 #Here we clear the console on startup and print the welcome message when the user wills it they can also clear it. We do this because the user likely did something before to run this so yeah.
 
 while True:
+	commandInput = ""
 	commandInput = input("[{}]>> ".format(userName))
 	commandInput = commandInput.lower()
 	if commandInput == "--help":
 		print("List of available commands type commandname --help to get help for that specific command: \n")
-		print("Browser, CreateFile, Clear, Quit, Kill, \n Exit, Credits, DeleteFile, Source, Google\n Youtube random, FakeBash, Easter Eggs, Donate, Snake,\n CD")
+		print("Browser, CreateFile, Clear, Quit, Kill, \n Exit, Credits, DeleteFile, Source, Google\n Youtube random, FakeBash, Easter Eggs, Donate, Snake,\n CD, Readfile")
 		continue
 	#here this is a while loop so the user can get back to where they need to be instead of having to copy code each time lol it would be terrible and infinite in size
 
 	elif commandInput == "createfile":
-		FileNameInput = input("Enter file name here \n[{}]>> ".format(userName))
+		FileNameInput = input("Enter file name here: ")
 		f = open("{}".format(FileNameInput), "x")
 		#So here we have the createfile we use X so that if it exists it still gets created and doesn't return an error
 		continue
@@ -93,28 +94,38 @@ while True:
 	elif commandInput == "00000000":
 		print("Very funny my guy but this shell isn't a legacy machine")
 		continue
+	
+	elif commandInput == "twtb":
+		print("Best company")
+		continue
 
 	elif commandInput == "kill":
 		clearConsole()
 		exit()
+	
+	elif commandInput == "myself":
+		print(userName)
+		continue
 
 	elif commandInput == "exit":
 		clearConsole()
 		exit()
 
 	elif commandInput == "credits":
-		print("Creator: Blowzart (Pro Retard)")
+		print("Creator: Calamity Software, Subsidiary of TWTB Incorporated")
 		#Simple print statement to print the credits.
 		continue
 	
 	elif commandInput == "deletefile":
-		removeFile = input("Enter file name here. \n[{}]>>".format(userName))
+		removeFile = input("Enter file name here: ")
 		isFile = os.path.isfile(removeFile)
 		if isFile == True:
 			os.remove("{}".format(removeFile))
+			removeFile = ""
 			continue
 		else:
 			print("That isn't a file, please choose a file. Note that this is case sensetive unlike commands.")
+			removeFile = ""
 			continue
 	#Here we remove a file, it was inconsistent with creating one so I changed that but otherwise we input file anme and use os.remove and format it to the variable
 
@@ -123,36 +134,52 @@ while True:
 	#Simple easter egg to throw people off
 
 	elif commandInput == "browser":
-		browserURL = input("Enter the url you want to go to.\n[{}]>>".format(userName))
+		browserURL = input("Enter the url you want to go to: ")
 		if browserURL == "":
 			print("You just found all our clues, the password is, (hentaiman is gonna give it to you impregnation and the unstoppable act of deflowering")
 			time.sleep(1)
 			webbrowser.open("")
+			browserURL = ""
 			continue
+
 		print("Opening web browser...")
 		time.sleep(0.5)
 		webbrowser.open('{}'.format(browserURL))
 		print("Opened web browser")
+		browserURL = ""
 		continue
 		#This is one of our most complicated commands, we start off with an input and check if that has some any input we show the user the password if not and open the browser with no input otherwise we go to whatever webpage they have using .format and {} 
 
 	elif commandInput == "password":
 		print("Calamity terminal is evolving enter the secret password to help it evolve\n")
-		secretPassword = input("Enter secret password here\n[{}]>>".format(userName))
+		secretPassword = input("Enter secret password here: ")
 		secretPassword = secretPassword.lower()
 		if secretPassword == "hentaiman is gonna give it to you impregnation and the unstoppable act of deflowering":
 			print("Wow you did it you got the secret password bro thats so cool")
 			time.sleep(0.5)
 			webbrowser.open('https://www.youtube.com/watch?v=BkEZvQcokTc&t=158s')
+			secretPassword = ""
 			continue
 		else:
 			print("you didn't get it noooo")
+			secretPassword = ""
 			continue
 		#Mopre complicated code we start off with a message make sure the player inputs the secret message which we make lowercase to remove case sensetiveness then we redirect either to a video or not depending on player message
 
 	elif commandInput == "browser --help":
 		print("The browser command opens a browser at a certain URL")
 		continue
+	
+	elif commandInput == "spear of longinus":
+		print("Not as long as my dick")
+		continue
+	
+	elif commandInput == "slapahoe":
+		print("slaps a hoe, you make notice i slapped you, go figure")
+		continue
+
+	elif commandInput == ""
+
 
 	elif commandInput == "createfile --help":
 		print("The createfile command can create a file it will create the file in the directory Calamity is installed")
@@ -161,7 +188,7 @@ while True:
 	elif commandInput == "clear --help":
 		print("The clear command clears the terminal.")
 		continue
-
+	
 	elif commandInput == "quit --help":
 		print("The quit command quits Calamity terminal :(")
 		continue
@@ -172,7 +199,7 @@ while True:
 
 	elif commandInput == "kill --help":
 		print("The kill command kills you!")
-		time.sleep(2)
+		time.sleep(1.5)
 		print("Just kidding or am I? We won't know until later on?")
 		continue
 
@@ -194,7 +221,7 @@ while True:
 		continue
 
 	elif commandInput == "google":
-		googleSearch = input("What do you want to search?\n[{}]>>".format(userName))
+		googleSearch = input("What do you want to search: ")
 		webbrowser.open('https://www.google.com/search?q={}'.format(googleSearch))
 		continue
 
@@ -234,13 +261,17 @@ while True:
 	elif commandInput == "it is":
 		if terminalMessage == True:
 			print("Fine, it is.")
+			terminalMessage = ""
+			continue
+
 		else:
 			print("That isn't a command --help to find commands.")
-		continue
+			terminalMessage = ""
+			continue
 
 	elif commandInput == "password --help":
-		print("Calamity.error(process exited with code 1) password is a real command the --help tag is not defined please report this at our github")
-		time.sleep(1)
+		print("Calamity.error(process exited with code 1) command (password) is a command --help argument is not valid see github for more information")
+		time.sleep(0.4)
 		webbrowser.open("https://github.com/Blowzart/Calamity-Terminal")
 		exit()
 
@@ -293,11 +324,13 @@ while True:
 		continue
 
 	elif commandInput == "cd":
-		direcInput = input("input the directory you would like to go to.\n[{}]>> ".format(userName))
+		direcInput = input("input the directory you would like to go to: ")
 		enterDirec = os.path.isdir(direcInput)
 		if enterDirec == True:
-		    os.chdir(direcInput)
-		    continue
+			os.chdir(direcInput)
+			direcInput = ""
+			enterDirec = ""
+			continue
 
 		else:
 			print("That isn't a path please select a path.")
@@ -306,8 +339,28 @@ while True:
 	elif commandInput == "cd --help":
 		print("Changes directories for Calamity to be able to work anywhere.\n Can only cd to folders inside the Calamity folder.")
 		continue
+	
+	elif commandInput == "readfile":
+		fileName = input("Enter filename here: ")
+		openLike = "" 
+		openedFile = open("{}".format(fileName), "r") 
+		fileText = openedFile.read() 
+		openedFile.close() 
+		print(fileText)
+
+
+		fileName = ""
+		openLike = ""
+		openedFile = ""
+		fileText = ""
+		continue
+	
+	elif commandInput == "say":
+		sayInput = input("What to say: ")
+		print(sayInput)
+		sayInput = ""
+		continue
 
 	else:
 		print("That isn't a command --help to find commands.")
 		continue
-
