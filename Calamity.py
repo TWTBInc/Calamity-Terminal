@@ -9,29 +9,19 @@ import time
 import getpass
 userName = getpass.getuser()
 
+
 #os for os.remove() and os.system() and whatnot webbrowser for webbrowser.open() random for random list choices time for its time.sleep() 
 
 def clearConsole():
-    command = 'clear'
     if os.name in ("nt", "dos"):
         command = "cls"
+
     else:
     	command = "clear"
+
     os.system(command)
 #a command to clear console works most of the time
 
-
-def openFakeBash():
-	commandBASH = "python fakeBash.py"
-	if os.name in ("nt", "dos"):
-		commandBASH = "python fakeBash.py"
-	else:
-		commandBASH = "python fakeBash.py"
-	os.system(commandBASH)
-
-def openSnek():
-	commandSnek = "python Snake.py"
-	os.system(commandSnek)
 
 VideoList = ["https://www.youtube.com/watch?v=d5ab8BOu4LE", "https://www.youtube.com/watch?v=H6M0EulApMM", "https://www.youtube.com/watch?v=IRF6nmqcbxo", "https://www.youtube.com/watch?v=XZVpR3Pk-r", "https://www.youtube.com/watch?v=qeMFqkcPYcg", "https://www.youtube.com/watch?v=9jK-NcRmVcw", "https://www.youtube.com/watch?v=cPCLFtxpadE", "https://www.youtube.com/watch?v=PGNiXGX2nLU", "https://www.youtube.com/watch?v=ZHwVBirqD2s", "https://www.youtube.com/watch?v=lDK9QqIzhwk", "https://www.youtube.com/watch?v=F01UTYg79KY", "https://www.youtube.com/watch?v=HgzGwKwLmgM", "https://www.youtube.com/watch?v=CD-E-LDc384"]
 
@@ -143,7 +133,7 @@ while True:
 			continue
 
 		print("Opening web browser...")
-		time.sleep(0.5)
+		time.sleep(0.4)
 		webbrowser.open('{}'.format(browserURL))
 		print("Opened web browser")
 		browserURL = ""
@@ -164,7 +154,7 @@ while True:
 			print("you didn't get it noooo")
 			secretPassword = ""
 			continue
-		#Mopre complicated code we start off with a message make sure the player inputs the secret message which we make lowercase to remove case sensetiveness then we redirect either to a video or not depending on player message
+		#More complicated code we start off with a message make sure the player inputs the secret message which we make lowercase to remove case sensetiveness then we redirect either to a video or not depending on player message
 
 	elif commandInput == "browser --help":
 		print("The browser command opens a browser at a certain URL")
@@ -177,9 +167,6 @@ while True:
 	elif commandInput == "slapahoe":
 		print("slaps a hoe, you make notice i slapped you, go figure")
 		continue
-
-	elif commandInput == ""
-
 
 	elif commandInput == "createfile --help":
 		print("The createfile command can create a file it will create the file in the directory Calamity is installed")
@@ -199,7 +186,7 @@ while True:
 
 	elif commandInput == "kill --help":
 		print("The kill command kills you!")
-		time.sleep(1.5)
+		time.sleep(0.9)
 		print("Just kidding or am I? We won't know until later on?")
 		continue
 
@@ -215,6 +202,10 @@ while True:
 	elif commandInput == "source":
 		webbrowser.open('https://github.com/Blowzart/Calamity-Terminal')
 		continue
+	
+	elif commandInput == "":
+		continue
+	
 
 	elif commandInput == "source --help":
 		print("The source command shows the source code for this project yes its even open source!")
@@ -222,7 +213,8 @@ while True:
 
 	elif commandInput == "google":
 		googleSearch = input("What do you want to search: ")
-		webbrowser.open('https://www.google.com/search?q={}'.format(googleSearch))
+		webbrowser.open('https://www.google.com/search?q={}&sourceid=Calamity-Terminal'.format(googleSearch))
+		googleSearch = ""
 		continue
 
 	elif commandInput == "google --help":
@@ -290,7 +282,7 @@ while True:
 		continue
 
 	elif commandInput == "fakebash":
-		openFakeBash()
+		from fakeBash import *
 
 	elif commandInput == "fakebash --help":
 		print("FakeBash is a command that enters a calamity terminal environment\n with regular syntax and capabilities for the more technically inclined users.")
@@ -309,9 +301,9 @@ while True:
 
 	elif commandInput == "snake":
 		print("Press the B key to hide the score GUI")
-		time.sleep(1)
+		time.sleep(0.3)
 		os.system("pip install pygame")
-		openSnek()
+		from Snake import *
 		continue
 
 	elif commandInput == "cls":
@@ -328,16 +320,17 @@ while True:
 		enterDirec = os.path.isdir(direcInput)
 		if enterDirec == True:
 			os.chdir(direcInput)
-			direcInput = ""
-			enterDirec = ""
-			continue
 
 		else:
 			print("That isn't a path please select a path.")
-			continue
+		
+		direcInput = ""
+		enterDirec = ""
+		continue
+		
 
 	elif commandInput == "cd --help":
-		print("Changes directories for Calamity to be able to work anywhere.\n Can only cd to folders inside the Calamity folder.")
+		print("Changes directories for Calamity to be able to work anywhere.")
 		continue
 	
 	elif commandInput == "readfile":
@@ -359,6 +352,18 @@ while True:
 		sayInput = input("What to say: ")
 		print(sayInput)
 		sayInput = ""
+		continue
+	
+	elif commandInput == "say --help":
+		print("Echo back whatever you say Note: Updating soon to use TWTB Echo")
+		continue
+	
+	elif commandInput == "crypt":
+		print("That command is in the works, to help speed up the process donate!")
+		continue
+	
+	elif commandInput == "crypt --help":
+		print("Crypt is a command that will run a CSCRPT file of your choosing")
 		continue
 
 	else:
