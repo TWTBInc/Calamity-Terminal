@@ -314,6 +314,10 @@ while True:
 		clearConsole()
 		print("Welcome to Calamity terminal. Type --help to see the list of available commands.\n")
 		continue
+	
+	elif commandInput == "frog":
+		print("I put a hole in a frog for fuckin with me.")
+		continue
 
 	elif commandInput == "snake --help":
 		print("Lets you play the snake game. You can also press the B key to hide the score GUI")
