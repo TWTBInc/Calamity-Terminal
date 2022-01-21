@@ -159,6 +159,10 @@ while True:
 	elif commandInput == "browser --help":
 		print("The browser command opens a browser at a certain URL")
 		continue
+		
+	elif commandInput == "haruhi":
+		print("Good waifu")
+		continue
 	
 	elif commandInput == "spear of longinus":
 		print("Not as long as my dick")
