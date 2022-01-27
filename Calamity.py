@@ -61,7 +61,6 @@ while True:
 	
 	elif commandInput == "fly me to the moon":
 		print("And let me play among the stars, let me see what spring is like on jupiter and mars")
-		time.sleep(0.4)
 		webbrowser.open("https://www.youtube.com/watch?v=4S6STxv9LDE")
 		continue
 		
@@ -104,6 +103,7 @@ while True:
 	elif commandInput == "credits":
 		print("Creator: Calamity Software, Subsidiary of TWTB Incorporated")
 		#Simple print statement to print the credits.
+		# Wow past me, really helpful code comments
 		continue
 	
 	elif commandInput == "deletefile":
@@ -127,13 +127,11 @@ while True:
 		browserURL = input("Enter the url you want to go to: ")
 		if browserURL == "":
 			print("You just found all our clues, the password is, (hentaiman is gonna give it to you impregnation and the unstoppable act of deflowering")
-			time.sleep(1)
 			webbrowser.open("")
 			browserURL = ""
 			continue
 
 		print("Opening web browser...")
-		time.sleep(0.4)
 		webbrowser.open('{}'.format(browserURL))
 		print("Opened web browser")
 		browserURL = ""
@@ -146,7 +144,6 @@ while True:
 		secretPassword = secretPassword.lower()
 		if secretPassword == "hentaiman is gonna give it to you impregnation and the unstoppable act of deflowering":
 			print("Wow you did it you got the secret password bro thats so cool")
-			time.sleep(0.5)
 			webbrowser.open('https://www.youtube.com/watch?v=BkEZvQcokTc&t=158s')
 			secretPassword = ""
 			continue
@@ -190,7 +187,7 @@ while True:
 
 	elif commandInput == "kill --help":
 		print("The kill command kills you!")
-		time.sleep(0.9)
+		time.sleep(0.2)
 		print("Just kidding or am I? We won't know until later on?")
 		continue
 
@@ -218,6 +215,7 @@ while True:
 	elif commandInput == "google":
 		googleSearch = input("What do you want to search: ")
 		webbrowser.open('https://www.google.com/search?q={}&sourceid=Calamity-Terminal'.format(googleSearch))
+		# Get gaming, also now we are a web browser amazing 
 		googleSearch = ""
 		continue
 
@@ -227,13 +225,11 @@ while True:
 
 	elif commandInput == "my memories will last":
  		print("You can't erase the past.")
- 		time.sleep(0.5)
  		webbrowser.open('https://www.youtube.com/watch?v=Ir_1tqV9ICk')
  		continue
 
 	elif commandInput == "im sorry":
  		print("I'm not a real person the developer is you can find him at")
- 		time.sleep(0.5)
  		webbrowser.open('https://github.com/Blowzart/Calamity-Terminal')
  		continue
 
@@ -245,7 +241,6 @@ while True:
  	#A couple of easter eggs printing and web browser opening
 	elif commandInput == "youtube random":
  		print("Sending a random song...")
- 		time.sleep(0.3)
  		webbrowser.open('{}'.format(random.choice(VideoList)))
  		continue
  	#Wow also very complicated and not complicated, the system takes a random youtube video from my videolist list formats the {} to that using .format
@@ -267,7 +262,6 @@ while True:
 
 	elif commandInput == "password --help":
 		print("Calamity.error(process exited with code 1) command (password) is a command --help argument is not valid see github for more information")
-		time.sleep(0.4)
 		webbrowser.open("https://github.com/Blowzart/Calamity-Terminal")
 		exit()
 
@@ -278,7 +272,6 @@ while True:
 		eggInput = input("We have easter eggs we do you can check out a list of them at out github wiki would you like to go there Y/N \n>>")
 		eggInput = eggInput.lower()
 		if eggInput == "y":
-			time.sleep(0.5)
 			webbrowser.open("https://github.com/Blowzart/Calamity-Terminal/wiki/Easter-eggs.")
 
 	elif commandInput == "last input":
@@ -294,7 +287,6 @@ while True:
 
 	elif commandInput == "donate":
 		print("Wow your thinking of donating, blushes you can donate here where you're being redirected to.")
-		time.sleep(1)
 		webbrowser.open("https://www.patreon.com/Blowzart?fan_landing=true")
 		continue
 
@@ -305,7 +297,6 @@ while True:
 
 	elif commandInput == "snake":
 		print("Press the B key to hide the score GUI")
-		time.sleep(0.3)
 		os.system("pip install pygame")
 		from Snake import *
 		continue
@@ -371,7 +362,7 @@ while True:
 		continue
 	
 	elif commandInput == "crypt --help":
-		print("Crypt is a command that will run a CSCRPT file of your choosing")
+		print("Crypt is a command that will run a CSCRYPT file of your choosing")
 		continue
 
 	else:
