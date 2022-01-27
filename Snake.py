@@ -44,6 +44,11 @@ pygame.display.set_caption('Calamity Snake Score: {}'.format(score))
  
 # FPS (frames per second) controller
 fps = pygame.time.Clock()
+# Time to put a cap on this because more frames equals more better
+if fps  > 60:
+ fps == 60
+ 
+# Genius
  
 # defining snake default position
 snake_position = [100, 50]
