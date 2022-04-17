@@ -214,6 +214,10 @@ while True:
 
 	elif commandInput == "google":
 		googleSearch = input("What do you want to search: ")
+		if googleSearch == "your mother":
+			print("You monster")
+			continue
+		
 		webbrowser.open('https://www.google.com/search?q={}&sourceid=Calamity-Terminal'.format(googleSearch))
 		# Get gaming, also now we are a web browser amazing 
 		googleSearch = ""
@@ -229,7 +233,7 @@ while True:
  		continue
 
 	elif commandInput == "im sorry":
- 		print("I'm not a real person the developer is you can find him at")
+ 		print("I'm not a real person the developers are; you can find him at")
  		webbrowser.open('https://github.com/Blowzart/Calamity-Terminal')
  		continue
 
